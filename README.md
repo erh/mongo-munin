@@ -4,9 +4,11 @@ Munin Plugins for MongoDB
 
 Plugins
 ----------
-* mongo_ops   : graphs operations/second
-* mongo_mem   : graphs mapped, virtual and resident memory usage
-* mongo_btree : graphs btree access/misses/etc...
+* mongo_ops   : operations/second
+* mongo_mem   : mapped, virtual and resident memory usage
+* mongo_btree : btree access/misses/etc...
+* mongo_conn  : current connections
+* mongo_lock  : write lock info  
 
 Requirements
 -----------
