@@ -8,6 +8,9 @@ try:
 except ImportError:
     import simplejson as json
 
+def ok(s):
+    return s == "resident" or s == "virtual" or s == "mapped"
+
 
 def getParsed():
     raw = urllib2.urlopen( "http://127.0.0.1:28017/_status" ).read()
@@ -15,23 +18,22 @@ def getParsed():
 
 def data():
     parsed = getParsed()
-    for k,v in parsed["serverStatus"]["opcounters"].iteritems():
-        print( str(k) + ".value " + str(v) )
+    for k,v in parsed["serverStatus"]["mem"].iteritems():
+        if ok(k):
+            print( str(k) + ".value " + str(v) )
 
 def config():
 
-    print "graph_title MongoDB ops"
+    print "graph_title MongoDB memory usage"
     print "graph_args --base 1000"
-    print "graph_vlabel ops / ${graph_period}"
+    print "graph_vlabel mb ${graph_period}"
     print "graph_category MongoDB"
-    print "graph_total total"
 
-    for k in getParsed()["serverStatus"]["opcounters"]:
-        print k + ".label " + k
-        print k + ".min 0"
-        print k + ".type COUNTER"
-        print k + ".max 500000"
-        print k + ".draw AREA"
+    for k in getParsed()["serverStatus"]["mem"]:
+        if ok( k ):
+            print k + ".label " + k
+            print k + ".type GAUGE"
+            print k + ".draw AREA"
 
 
 if __name__ == "__main__":
