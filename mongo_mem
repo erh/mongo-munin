@@ -21,20 +21,19 @@ def ok(s):
 def doData():
     for k,v in getServerStatus()["mem"].iteritems():
         if ok(k):
-            print( str(k) + ".value " + str(v) )
+            print( str(k) + ".value " + str(v * 1024 * 1024) )
 
 def doConfig():
 
     print "graph_title MongoDB memory usage"
-    print "graph_args --base 1000"
-    print "graph_vlabel mb ${graph_period}"
+    print "graph_args --base 1024 --vertical-label Bytes"
     print "graph_category MongoDB"
 
     for k in getServerStatus()["mem"]:
         if ok( k ):
             print k + ".label " + k
-            print k + ".type GAUGE"
-            print k + ".draw AREA"
+            print k + ".draw LINE1"
+
 
 
 

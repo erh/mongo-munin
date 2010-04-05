@@ -18,4 +18,4 @@ def doConfig():
         print k + ".min 0"
         print k + ".type COUNTER"
         print k + ".max 500000"
-        print k + ".draw AREA"
+        print k + ".draw LINE1"

@@ -34,7 +34,7 @@ def doConfig():
         print k + ".min 0"
         print k + ".type COUNTER"
         print k + ".max 500000"
-        print k + ".draw AREA"
+        print k + ".draw LINE1"
 
 if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "config":

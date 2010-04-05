@@ -4,11 +4,11 @@ def get():
 
 def doData():
     for k,v in get().iteritems():
-        print( str(k) + ".value " + str(v) )
+        print( str(k) + ".value " + str(int(v)) )
 
 def doConfig():
 
-    print "graph_title MongoDB memory usage"
+    print "graph_title MongoDB btree stats"
     print "graph_args --base 1000"
     print "graph_vlabel mb ${graph_period}"
     print "graph_category MongoDB"
@@ -18,7 +18,7 @@ def doConfig():
         print k + ".min 0"
         print k + ".type COUNTER"
         print k + ".max 500000"
-        print k + ".draw AREA"
+        print k + ".draw LINE1"
 
 
 
