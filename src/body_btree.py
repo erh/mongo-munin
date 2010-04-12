@@ -9,7 +9,7 @@ def doData():
 def doConfig():
 
     print "graph_title MongoDB btree stats"
-    print "graph_args --base 1000"
+    print "graph_args --base 1000 -l 0"
     print "graph_vlabel mb ${graph_period}"
     print "graph_category MongoDB"
 
