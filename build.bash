@@ -8,7 +8,7 @@ do
     
     out=mongo_$x
 
-    echo "#!"`which python` > $out
+    echo "#!/usr/bin/env python" > $out
     echo "" >> $out
     echo "## GENERATED FILE - DO NOT EDIT" >> $out
     cat src/header.py >> $out
