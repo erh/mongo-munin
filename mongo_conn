@@ -4,6 +4,7 @@
 
 import urllib2
 import sys
+import os
 
 try:
     import json
@@ -12,7 +13,9 @@ except ImportError:
 
 
 def getServerStatus():
-    raw = urllib2.urlopen( "http://127.0.0.1:28017/_status" ).read()
+    host = os.environ.get("host", "127.0.0.1")
+    port = 28017
+    raw = urllib2.urlopen( "http://%s:%d/_status" % (host, port) ).read()
     return json.loads( raw )["serverStatus"]
 
 name = "connections"
