@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 for out in `ls src/body_*.py`
 do
